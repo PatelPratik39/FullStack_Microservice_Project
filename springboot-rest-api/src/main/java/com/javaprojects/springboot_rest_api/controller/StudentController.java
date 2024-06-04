@@ -1,6 +1,7 @@
 package com.javaprojects.springboot_rest_api.controller;
 
 import com.javaprojects.springboot_rest_api.bean.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -62,6 +63,36 @@ public class StudentController {
     @RequestMapping("students/query")
     public Student studentRequestVariable(@RequestParam int id, @RequestParam String firstName, @RequestParam String lastName){
         return new Student(id, firstName,lastName);
-}
+    }
 
+    //    http://localhost:8080/students/create
+//    SPRING Bott REST API that handles HTTP Post requests - create new User - 201 code
+//    @PostMapping and @RequestBody
+    @PostMapping("students/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student student){
+        System.out.println(student.getId());
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+        return student;
+    }
+
+//    http://localhost:8080/students/1/update
+    //    SPRING Bott REST API that handles HTTP PUT requests - update existing user
+
+    @PutMapping("students/{id}/update")
+    public Student updateStudent(@RequestBody Student student, @PathVariable("id") int studentId){
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+        return student;
+    }
+
+//    http://localhost:8080/students/1/delete
+//    SPRING Bott REST API that handles HTTP DELETE requests - DELETE existing user
+    @DeleteMapping("students/{id}/delete")
+    public String deleteStudent(@PathVariable("id") int studentId){
+        System.out.println(studentId);
+        return "Student DELETED Successfully!!!!!!";
+
+    }
 }

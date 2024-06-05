@@ -38,4 +38,25 @@ public class UserController {
         List<User> users =  userService.getAllUsers();
         return  new ResponseEntity<>(users, HttpStatus.OK);
     }
+
+//        Build UPDATE User REST API
+//    http://localhost:8080/api/users/1
+
+    @PutMapping("{id}")
+    public ResponseEntity<User> updateUser( @PathVariable("id") Long userId,
+                                            @RequestBody User user) {
+        user.setId(userId);  // I have to provide setId(userId) to prevent nullpoint exception because i have passes getId() in service class
+        User updatedUser = userService.updateUser(user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
+
+    //    Build DELETE User REST API
+//    http://localhost:8080/api/users/1
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
+        userService.deleteUser(userId);
+       return new ResponseEntity<>("User successfully DELETED, Man !!!!", HttpStatus.OK);
+    }
+
 }

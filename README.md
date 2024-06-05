@@ -7,5 +7,6 @@ Teck Stack
   - React, 
   - Kafka, 
   - RabbitMQ, 
-  - REST API, 
+  - REST API,
+  - MySQL Database
   - Docker & IntelliJ IDEA

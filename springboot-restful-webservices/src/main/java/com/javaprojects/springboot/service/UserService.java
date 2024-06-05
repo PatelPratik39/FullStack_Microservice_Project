@@ -1,18 +1,19 @@
 package com.javaprojects.springboot.service;
 
+import com.javaprojects.springboot.dto.UserDTO;
 import com.javaprojects.springboot.entity.User;
 
 import java.util.List;
 
 public interface UserService {
 
-    User createUser(User user);
+    UserDTO createUser(UserDTO user);
 
-    User getUserById(Long userId);
+    UserDTO getUserById(Long userId);
 
-    List<User> getAllUsers();
+    List<UserDTO> getAllUsers();
 
-    User updateUser(User user);
+    UserDTO updateUser(UserDTO user);
 
     void deleteUser(Long userId);
 }
